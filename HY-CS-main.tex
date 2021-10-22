@@ -37,9 +37,9 @@
 
 %% Reference style: select one 
 %% for APA = Harvard style = authoryear -> (Einstein, 1905) use:
-\usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
+%\usepackage[style=authoryear,bibstyle=authoryear,backend=biber,natbib=true,maxnames=99,maxcitenames=2,uniquelist=minyear,giveninits=true,uniquename=mininit]{biblatex}
 %% for numeric = Vancouver style -> [1] use:
-%\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
+\usepackage[style=numeric,bibstyle=numeric,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 %% for alpahbetic -> [Ein05] use:
 %\usepackage[style=alphabetic,bibstyle=alphabetic,backend=biber,natbib=true,maxbibnames=99,giveninits=true,uniquename=init]{biblatex}
 %
@@ -176,11 +176,10 @@
 %% Alternatively, \input is a more lower level macro 
 %% which simply inputs the content of the given file like it was copy&pasted there manually.
 
-\include{Ch.10_Introduction}
-\include{Ch.20_Methods}
-\include{Ch.30_Results}
-\include{Ch.40_Discussion}
-\include{Ch.50_Conclusions}
+\include{Ch.10_Johdanto}
+\include{Ch.20_Esittely}
+\include{Ch.30_Energiatehokkuus}
+\include{Ch.40_Yhteenveto}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\cleardoublepage                          %fixes the position of bibliography in bookmarks
@@ -193,11 +192,11 @@
 \begin{appendices}
 
 %% A sample Appendix
-\include{Ch.90_Appendix_1}
+%\include{Ch.90_Appendix_1}
 %% another appendix
-\include{instructions/instructions_english}
+%\include{instructions/instructions_english}
 %% yet another appendix
-\include{instructions/instructions_finnish}
+%\include{instructions/instructions_finnish}
 
 % BSc instructions
 %\include{instructions/bsc_finnish_contents}
