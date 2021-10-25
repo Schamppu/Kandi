@@ -1,4 +1,21 @@
-\section{Proof-of-Space (PoSp)\label{methods}}
+\section{Proof-of-Space (PoSp)\label{posp}}
 \begin{otherlanguage}{english}
-Proof of Space.
+Proof of Space, josta tässä tutkielmassa käytetään lyhennettä PoSp, kehitettiin ratkaisuna Bitcoinin energiankulutukseen \cite{pospchia1,posp2}. PoSp perustuu siihen, että poiketen PoW:sta louhijat todistavat varanneen tietyn määrän tallennustilaa sen sijaan, että niiden tulisi todistaa käyttäneen tietyn verran laskennallista tehokkuutta ongelman ratkaisulle.
+
+PoSp:n perusajatuksena on, että toisin kuin PoW:ssa, lohkon tiivisteeseen liittyvien ongelmien ratkaisut tallennetaan jo ennen ongelman vastaanottamista louhijan tallennustilaan \cite{posp3spacemint}. Kun ongelma tulee ratkaista, louhijat etsivät tallennustilastaan oikeaa ratkaisua, ja löytäessään ratkaisun validoivat lohkoketjuun tehdyn lisäkysen. Tällöin uuteen lohkoon liittyvän ongelman ratkaisemiseen menee hyvin vähän laskentatehoa, mutta ratkaisujen tallentamiseen vaaditaan paljon tallennustilaa ja aikaa. Näin ollen PoSp:n energiankulutus vastaa käytännössä kuluttajalaitteistolla rakennettua pilvipalvelinta.
+
+Ongelman ratkaisua lukuunottamatta PoSp toimii samalla tavalla kuin PoW: louhija, joka löytää ensimmäisenä oikean ratkaisun lähettää sen muille louhijoille validoitavaksi, ja validoinnin jälkeen oikean ratkaisun löytänyt louhija palkitaan kryptovaluutalla \cite{posp3spacemint}. SpaceMint-projektissa on mainittu PoSp:lle kolme etua verrattuna PoW:n:
+
+\begin{enumerate}
+\item Ekologisuus. PoSp tarvitsee toimintaansa tallennustilaa ja suorittaa hakuja tallennustilasta, joka on laskennallisesti huomattavasti edullisempaa kuin PoW:ssa prosessorin laskentatehoa hyödyntävä tiivistealgoritmin tuottamien ongelmien ratkaiseminen
+\item Ekonomisuus. Monilla kuluttajatason päätelaitteilla on huomattava määrä käyttämätöntä levytilaa, joka on taloudellisesti katsoen täysin hyödyntämätöntä. PoW:ssa on taloudellista järkevää suorittaa louhintaa vain tietyillä laitteilla ja vain tietyissä tilanteissa, kun kryptovaluutan hinta kattaa sähkön kulutuksen vaatimat kulut.
+\item Tasa-arvoisuus. PoW:ssa louhintaa tehdään lähes ainoastaan siihen erikoistuneissa louhintafarmeissa, kun taas yksittäisen henkilön mahdollisuudet tehdä taloudellisesti järkevää louhintaa on pienet. PoSp:ssa on teoreettisesti mahdollista, että louhintaa on mahdollista tehdä kuluttajatason laitteistolla.
+\end{enumerate}
+
+PoSp:ssa on matalasta energiakulutuksestaan huolimatta useita ongelmia, minkä takia konsensusmekanismi on marginaalinen verrattuna PoW:n ja PoS:n. Suurin PoSp lohkoketju, Chia, on tällä hetkellään kryptovaluuttojen markkina-arvotilastossa 244. suurin \cite{Coingecko}. Tämä tutkielma esittelee kaksi PoSp konsensusmekanismia hyödyntävää lohkoketjua: Spacemintin ja Chian. Spacemint-lohkoketjua ei ole otettu koskaan käyttöön, mutta se loi perustavanlaatuisen tutkimuksen PoSp:n käytölle.
+
+
+\input{Ch.23a_SpaceMint}
+\input{Ch.23b_Chia}
+
 \end{otherlanguage}

@@ -1,7 +1,25 @@
-\section{Proof-of-Stake (PoS)\label{methods}}
+\section{Proof-of-Stake (PoS)\label{pos}}
 
 \begin{otherlanguage}{english}
 
-Proof of stake.
+Proof-of-Stake, josta tässä tutkielmassa käytetään lyhennettä PoS, sai alkunsa vastauksena PoW:n energiankulutukselle \cite{pos2}. PoS:n ideana on, että lohkoketjun konsensusmekanismi ei perustu laskennalliselle tehokkuudelle, vaan taloudilleselle haitalle mikä aiheutuu louhijoille mikäli lohkoketjua yritetään hyödyntää haitallisessa mielessä. Louhijoita PoS:sa kutsutaan usein osakkaiksi (stakers).
+
+PoS lohkoketjujen malli koostuu viidestä eri osasta \cite{pos1, pos2}:
+
+\begin{enumerate}
+\item Konsensus, missä kaikki osakkaat (stakers) ovat yhteisymmärryksessä siitä, että lohkoketjuun tehdyt lisäykset ovat valideja.
+\item Osakkuus, eli sijoittamisprosessi, missä käyttäjä voi ryhtyä osakkaaksi sijoittamalla jonkin määrän kryptovaluuttaa lohkoketjuun. Sijoitettu kryptovaluutta lukitaan yleensä joksikin ajaksi, jolloin sijoitettuja varoja ei voi käyttää.
+\item Palkitseminen, missä osakkaille jaetaan sijoitetun valuutan mukaan suhteutettu palkinto siitä, että he ovat olleet osallisina lohkoketjun turvaamisessa.
+\item Rankaiseminen, missä lohkoketjun väärinkäytöstä tai sen yritykseen syyllistyneiden käyttäjien lukitsemista varoista vähennetään jokin osuus.
+\item Uudelleenvalinta, missä valitaan satunnaisesti tai muun valintaperusteen nojalla osakkaat, jotka validoivat seuraavan lisäkysen lohkoketjuun.
+\end{enumerate}
+
+Proof-of-Stake konsensusmekanismin ollaan havaittu sen eri implementaatioissa olevan hyvin vähän energiaa kuluttava. Ongelmia kuitenkin on: matala yksityisyys, pääoman kasautuminen muutamalle osakkaalle ja skaalautuvuus ovat suurimpia PoS:n kritiikkejä. Näihin on kuitenkin esitetty ratkaisuja esimerkiksi Ethereum 2.0 projektissa ja Cardanossa.
+
+Seuraavaksi tutkielma esittelee kaksi Proof-of-Stake konsensusmekanismilla toimivaa lohkoketjua: Ethereum 2.0:n ja Cardanon. Lohkoketjuja ei ole vielä otettu käyttöön, mutta niiden käyttämistä menetelmistä on useita tutkimuksia.
+
+\input{Ch.22a_Ethereum2.0}
+\input{Ch.22b_Cardano}
+
 
 \end{otherlanguage}
