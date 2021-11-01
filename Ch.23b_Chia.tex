@@ -1,6 +1,13 @@
 \subsection{Chia\label{chia}}
 \begin{otherlanguage}{english}
 
-Chia
+Chia-lohkoketjun kehitti Chia Network Inc. yritys, jonka perusti Bram Cohen 2017 \cite{chia1}. Bram Cohen on tullut tunnetuksi
+BitTorrent-sovelluksesta. Chia-lohkoketjun pääverkko (mainnet) julkaistiin 2021 neljän vuoden testausjakson jälkeen.
+
+Chia käyttää konsensusmekanisminaan Proof of Space and Timea (PoST) \cite{chia1}. Tämä konsensusmekanismi rakennettiin hyvin samanlaiseksi kuin miten Bitcoinin PoW-konsensusmekanismi toimii, mutta PoW:n energiakulutusongelma ratkaistaan Chiassa käyttämällä Proof-of-Spacea PoW:n sijaan. Chiassa vaaditaan myös vähintään 51\% konsensus, jotta uusi lohko voidaan hyväksyä osaksi lohkoketjua. Chian etuina Bitcoiniin verrattuna on myös Ethereumin kanssa hyvin samanlainen CLVM (Chia Lisp Virtual Machine). CLVM:llä on mahdollista kirjoittaa samaan tapaan kuin Ethereumissa älysopimuksia (smart contracts), millä voidaan tehdä lohkoketjussa toimivia sovelluksia.
+
+Toimintaperiaatteena Chiassa on tämän kappaleen alussa esitellyn kaltaista konsensusmekanismia hyvin vastaava mekanismi \cite{pospchia1}. Käytännössä siis siinä määrin missä Bitcoin vaatii louhijaa todistamaan käyttämänsä laskentatehon, Chiassa vaaditaan louhijaa todistamaan lohkoketjulle allokoitu tallennustila. Chiassa tämä on tehty niin, että louhija tallentaa ratkaisuja tallennustilaansa, ja kun uusi lohko lisätään lohkoketjuun, tulee louhijan löytää tallennetuista ratkaisuista oikea, ja nopeiten oikean ratkaisun löytänyt käyttäjä palkitaan kryptovaluutalla.
+
+Chian energiankulutus on PoW:lla vastaavanlaisiin (Bitcoin, Ethereum) verrattuna verrattain alhainen \cite{chiaenergy}. Koska Chia ei vaadi konsensusmekanismissaan laskentatehoa ja myös kuluttajatason tallennuslaitteiden energiakulutus on alhainen, on Chian arvioitu kuluttavan vuonna 2021 vain 0.307 terawattituntia.
 
 \end{otherlanguage}
