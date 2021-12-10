@@ -2,9 +2,27 @@
 \begin{otherlanguage}{english}
 Proof-of-Work, josta tässä tutkielmassa käytetään lyhennettä PoW, on tutkielman kirjoittamisen hetkellä markkinaosuudeltaan suurin konsensusmekanismi. PoW:ta käyttää kaksi suurinta lohkoketjua: Bitcoin ja Ethereum \cite{Coingecko}.
 
-PoW vaatii, että siihen osallistuvat, joita usein kutsutaan louhijoiksi (miners), ratkaisevat jatkuvasti hankaloituvan ongelman varmistaakseen, että lohkoketjuun lisätty lohko on validi \cite{blockchain1}. Tätä kutsutaan louhinnaksi (mining), ja tämä tutkielma myös käyttää kyseistä termiä kuvatakseen tätä tapahtumaa.
+\begin{figure}[!htbp]
+\centering
+\fbox{\includegraphics[width=0.98\textwidth]{proof-of-work}}
+\caption{Esimerkki Proof-of-Work ja Proof-of-Space konsensusmekanismien toimintaperiaatteesta}
+\label{fig_pow}
+\end{figure}
 
-Insentiviteettinä louhijoille annetaan palkkioksi jokin määrä kryptovaluuttaa palkkioksi ongelman ratkaisusta ja lohkoketjun konsensuksen validoinnista \cite{blockchain1}. Ongelman luomiseen käytettävän algoritmin vaikeus määräytyy tyypillisesti louhijoiden määrästä ja vaikeustasosta riippuen.
+\vspace{1mm}
+
+PoW vaatii, että sen turvaamiseen osallistuvat käyttäjät, joita usein kutsutaan louhijoiksi (miners), ratkaisevat ongelman varmistaakseen, että lohkoketjuun lisätty lohko on oikea \cite{blockchain1}. Ongelman ratkaisemisen jälkeen oikean ratkaisun löytäneelle käyttäjälle annetaan palkkio (block reward), ja kaavio \ref{fig_pow} esittää miten uusien lohkojen lisääminen tapahtuu lohkoketjuun. Tätä kutsutaan louhinnaksi (mining), ja tämä tutkielma myös käyttää kyseistä termiä kuvatakseen tätä tapahtumaa. PoW lohkoketjujen sisältämää dataa ja toimintaa esitellään tutkielman johdannossa.
+
+Kaavio \ref{fig_pow} esittää, miten uuden lohkon luominen, varmistaminen, ja lisääminen tapahtuu. Tämä kolmeen vaiheeseen (luonti, louhinta, palkitseminen) jaettu prosessi toimii seuraavalla tavalla:
+
+\begin{enumerate}
+\item Luodaan siirtotapahtumia datanaan sisältävä lohko. Tutkielman johdannossa esiteltiin, mitä tyypillisesti lohkoketjun yksi lohko sisältää datanaan. Kaavion \ref{fig_pow} ensimmäinen osa esittää uuden luodun lohkon, missä olennaista louhinnan kannalta on sen tiiviste.
+\item Louhijat pyrkivät ratkaisemaan lohkon tiivisteeseen liittyvän ongelman. Koska esimerkiksi Bitcoinissa käytetty SHA-256 tiivistealgoritmi luo annetusta merkkijonosta aina saman tiivisteen, tehdään oikean tiivisteen arvaamisesta louhijoille hankalaa luomalla sille vaikeusaste, mikä saavutetaan lisäämällä tiivisteen alkuun jokin määrä nollia \cite{blockchain1}. Vaikeusaste määräytyy louhijoiden määrän (eli käytännössä kokonaislaskentatehokkuuden) mukaan niin, että uusi lohko luodaan noin joka kymmenes minuutti. Tämän jälkeen louhijat pyrkivät luomaan tiivisteen, minkä alussa on yhtä monta nollaa kuin asetetussa vaikeusasteessa. Koska yksi merkkijono tuottaa tiivistelagoritmilla aina saman tiivisteen, joutuvat louhijat lisäämään tiivisteeseen satunnaisen luvun, mitä kutsutaan nonceksi (number once), jolloin riittävällä määrällä yrityksiä jossakin vaiheessa joku louhijoista saa luotua sellaisen tiivisteen, missä on vaikeuasteen vaatima määrä nollia tiivisteen alussa. Tämä prosessi on yksinkertaistettuna esitetty kaavion \ref{fig_pow} toisessa vaiheessa.
+\item Oikean ratkaisun (eli käytännössä oikean tiivisteen tuottaneen noncen) löytänyt käyttäjä lähettää vastauksensa lohkoketjulle ja vastaanottaa ratkaisun löytämisestä palkkion. Tyypillisesti palkkiona käyttäjä saa jonkin määrän lohkoketjun käyttämää kryptovaluuttaa itselleen. Kaavion \ref{fig_pow} viimeinen vaihe käsittelee palkkionjakoa.
+\end{enumerate}
+
+PoW konsensusmekanismin vahvuutena on sen suuri hajautuneisuus. Lohkoketjuissa tyypillisesti periaatteena on, että mitä hajautuneempi lohkoketju on, sitä turvallisempi se on, sillä laajasti hajautuneisiin lohkoketjuihin on käytännössä mahdotonta kohdistaa hyökkäys \cite{51attack}. Esimerkiksi Bitcoinia vastaan hyökkääminen vaatisi, että hyökkääjä saisi käyttöönsä yli puolet Bitcoinin louhintaan käytetystä laskentatehosta. Tästä käytetään Bitcoinin tapauksessa nimitystä "51\% Attack".
+
 
 Tutkielma esittelee seuraavaksi miten kuvailtua konsensusmekanismia käytetään kahdessa suurimmista lohkoketjuista, eli Bitcoinissa ja Ethereumissa.
 

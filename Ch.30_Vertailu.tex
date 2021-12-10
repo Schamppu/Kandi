@@ -1,0 +1,73 @@
+\chapter{Konsensusmekanismien vertailu\label{vertailu}}
+
+Tämä kappale vertailee konsensusmekanismien kokonaisenergiankulutusta, yksittäisten siirtotapahtumien energiankulutusta sekä muita tärkeitä konsensusmekanismeihin liittyviä ominaispiirteitä, kuten skaalautuvuutta ja turvallisuutta. Vertailu tehdään käyttämällä teoriaosuudessa esiteltyjä merkittävimpiä lohkoketjuja esimerkkitapauksina kunkin konsensusmekanismin tyypillisestä energiankulutuksesta.
+
+\begin{center}
+\begin{table}[!hbtp]
+\begin{tabular}{   | c |  c |  c |  c | c |   } 
+  \hline
+ \thead {Lohkoketjun \\ nimi} & \thead {Energiankulutus \\ (vuodessa)} & \thead {Transaktioita \\ sekunnissa (TPS)} & \thead {Energiankulutus \\ (siirtoa kohden)} \\ 
+  \hline
+ \makecell {Bitcoin (PoW)} & 200,57 TWh \cite{bitcoinenergy} & $\sim$7 \cite{bitcoin-tps} & 2006,54 kWh \\
+  \hline
+ \makecell {Ethereum (PoW)} & 94,73 TWh \cite{ethereumenergy} & $\sim$14 \cite{ethereum-tps} & 207,95 kWh \\
+  \hline
+ \makecell {Cardano (PoS)} & 6 GWh \cite{cardanoenergy} & $\sim$257 \cite{cardano-tps} & 0,5479 kWh  \\
+  \hline
+ \makecell {Algorand (PoS)} & 4,9 GWh \cite{algorandenergy} & $\sim$1300 \cite{algorandenergy} & 0,000008 kWh  \\
+  \hline
+ \makecell {Chia (PoSp)} & 0,307 TWh \cite{chiaenergy} & $\sim$20\footnotemark & 0,4864 kWh\footnotemark[\value{footnote}]  \\
+  \hline
+\end{tabular}
+\caption{\label{tab:pow-database}Energiankulutus- ja sekunnissa tapahtuvien siirtotapahtumien vertailu eri lohkoketjujen välillä.}
+\label{table-energy}
+\end{table}
+\end{center}
+
+Taulukosta \ref{table-energy} huomataan, että PoW-lohkoketjujen vuosittainen energiankulutus on sekä PoS- että PoSp-konsensusmekanismeilla toimiviin lohkoketjuihin verrattuna merkittävästi suurempi. Vuosittainen energiankulutus on kuitenkin vertailukohteena harhaanjohtava, sillä sitä on hankala käyttää lohkoketjun energiatehokkuuden mittaamiseen. Täten taulukossa \ref{table-energy} on myös esitetty kuinka paljon energiaa yksi siirtotapahtuma vaatii.
+
+\vspace{1cm}
+
+\footnotetext{Siirtotapahtumien määrän on arvioitu olevan samaa luokkaa PoW-konsensusmekanismien kanssa. Ks. kappale \ref{chia}, missä esitetään millä menetelmällä Chian TPS ja energiankulutus siirtotapahtumaa kohden on arvioitu.}
+
+Energiankulutusta vertailtaessa on lohkoketjujen markkina-arvolla myös merkittävä vaikutus niiden energiankulutukseen. Tyypillisesti matalan markkina-arvon lohkoketjut kuluttavat vähemmän energiaa, kun niissä on vähemmän solmuja ja louhijoita verrattuna suurempiin lohkoketjuihin. Kuvasta \ref{fig_energy} näkyy, miten lohkoketjun markkina-arvon noustessa sen energiankulutus kasvaa merkittävästi.
+
+\begin{filecontents}{thu2.dat}
+X Arvo  	Kulutus
+1 80	    19.87 % 80.19
+2 235	    36.75 % 235.13
+3 364	    77.78 % 364.23
+4 613	    135.12 % 613.34
+5 1230  	189.88 % 
+\end{filecontents}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+axis lines=middle,
+ymin=19.80,
+ymax=200,
+x label style={at={(current axis.right of origin)},anchor=north, below=8mm},
+%title={\textit{\textbf{Bitcoinin energiankulutus markkina-arvon kasvaessa}}},
+xlabel=Markkina-arvo (miljardeissa),
+ylabel=Energiankulutus vuodessa (TWh),
+xticklabel style = {rotate=0,anchor=east,below=1mm},
+enlargelimits = false,
+ymajorgrids=true,
+grid style=dashed,
+xticklabels from table={thu2.dat}{Arvo},xtick=data]
+\addplot[orange,thick,mark=square*] table [y=Kulutus,x=X]{thu2.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{Bitcoinin energiankulutus markkina-arvon kasvaessa. Kuvaajan tilastot on kerätty ottamalla sen markkina-arvo Coingecko-verkkosivulta ja samalta päivältä sen energiankulutus Diginomist-verkkosivun energiankulutustilastosta Waybackmachinella.}
+\label{fig_energy}
+\end{figure}
+
+Energiankulutuksen kasvu markkina-arvon kasvaessa kuvan \ref{fig_energy} esittämällä tavalla pätee vain PoW-konsensusmekanismilla toimiviin lohkoketjuihin. PoS:ssä solmujen määrä ei kasva yhtä merkittävästi markkina-arvon kasvaessa, sillä PoS:ssä osakkaiden ja sijoitetun pääoman määrä kasvaa vastaavalla tavalla, mutta solmujen ylläpito ei ole yhtä kannattavaa käyttäjälle. PoSp:ssä puolestaan on esitetty, että lohkoketjun vaatima tallennustilan määrä voi kasvaa vastaavalla tavalla, mutta tallennustilan ollessa energiankulutukseltaan huomattavasti tehokkaampaa ei energiankulutus kasva yhtä merkittävästi.
+
+Tutkielma vertailee seuraavaksi jokaisen tutkielman käsittelemän konsensusmekanismin energiankulutusta ja niiden muita ekologisuuteen vaikuttavia tekijöitä. Näiden asioiden lisäksi tutkielma pohtii konsensusmekanismeihin liittyviä mahdollisia muita tekijöitä, kuten niiden skaalautuvuutta ja hajautuneisuutta.
+
+\input{Ch.31_POW_Vertailu}
+\input{Ch.32_POS_Vertailu}
+\input{Ch.33_POSP_Vertailu}

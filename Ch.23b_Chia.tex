@@ -1,13 +1,30 @@
 \subsection{Chia\label{chia}}
-\begin{otherlanguage}{english}
+\begin{otherlanguage}{english}\sloppy
 
-Chia-lohkoketjun kehitti Chia Network Inc. yritys, jonka perusti Bram Cohen 2017 \cite{chia1}. Bram Cohen on tullut tunnetuksi
+Chia-lohkoketjua kehittää Chia Network Inc. yritys, jonka perusti Bram Cohen 2017 \cite{chia1}. Bram Cohen on tullut tunnetuksi
 BitTorrent-sovelluksesta. Chia-lohkoketjun pääverkko (mainnet) julkaistiin 2021 neljän vuoden testausjakson jälkeen.
 
-Chia käyttää konsensusmekanisminaan Proof of Space and Timea (PoST) \cite{chia1}. Tämä konsensusmekanismi rakennettiin hyvin samanlaiseksi kuin miten Bitcoinin PoW-konsensusmekanismi toimii, mutta PoW:n energiakulutusongelma ratkaistaan Chiassa käyttämällä Proof-of-Spacea PoW:n sijaan. Chiassa vaaditaan myös vähintään 51\% konsensus, jotta uusi lohko voidaan hyväksyä osaksi lohkoketjua. Chian etuina Bitcoiniin verrattuna on myös Ethereumin kanssa hyvin samanlainen CLVM (Chia Lisp Virtual Machine). CLVM:llä on mahdollista kirjoittaa samaan tapaan kuin Ethereumissa älysopimuksia (smart contracts), millä voidaan tehdä lohkoketjussa toimivia sovelluksia.
+Chia käyttää konsensusmekanisminaan Proof of Space and Timea (PoST) \cite{chia1}. Tämä konsensusmekanismi rakennettiin hyvin samanlaiseksi kuin miten Bitcoinin PoW-konsensus-mekanismi toimii, mutta PoW:n energiakulutusongelma ratkaistaan Chiassa käyttämällä Proof-of-Spacea PoW:n sijaan. Chiassa vaaditaan myös vähintään 51\% konsensus, jotta uusi lohko voidaan hyväksyä osaksi lohkoketjua. Chian etuina Bitcoiniin verrattuna on myös Ethereumin kanssa hyvin samanlainen CLVM (Chia Lisp Virtual Machine). CLVM:llä on mahdollista kirjoittaa samaan tapaan kuin Ethereumissa älysopimuksia (smart contracts), millä voidaan tehdä lohkoketjussa toimivia sovelluksia.
 
 Toimintaperiaatteena Chiassa on tämän kappaleen alussa esitellyn kaltaista konsensusmekanismia hyvin vastaava mekanismi \cite{pospchia1}. Käytännössä siis siinä määrin missä Bitcoin vaatii louhijaa todistamaan käyttämänsä laskentatehon, Chiassa vaaditaan louhijaa todistamaan lohkoketjulle allokoitu tallennustila. Chiassa tämä on tehty niin, että louhija tallentaa ratkaisuja tallennustilaansa, ja kun uusi lohko lisätään lohkoketjuun, tulee louhijan löytää tallennetuista ratkaisuista oikea, ja nopeiten oikean ratkaisun löytänyt käyttäjä palkitaan kryptovaluutalla.
 
-Chian energiankulutus on PoW:lla vastaavanlaisiin (Bitcoin, Ethereum) verrattuna verrattain alhainen \cite{chiaenergy}. Koska Chia ei vaadi konsensusmekanismissaan laskentatehoa ja myös kuluttajatason tallennuslaitteiden energiakulutus on alhainen, on Chian arvioitu kuluttavan vuonna 2021 vain 0.307 terawattituntia.
+Chian energiankulutus on PoW:lla vastaavanlaisiin (Bitcoin, Ethereum) verrattuna verrattain alhainen \cite{chiaenergy}. Koska Chia ei vaadi konsensusmekanismissaan laskentatehoa ja myös kuluttajatason tallennuslaitteiden energiakulutus on alhainen, on Chian arvioitu kuluttavan vuonna 2021 vain 0,307 terawattituntia energiaa. Chian teoreettisesta siirtotapahtumien määrän maksimista sekunnissa ei ole tehty tarkkaa tutkimusta, mutta koska Chian käyttämä PoSp on hyvin samankaltainen PoW:n kanssa voidaan olettaa siirtotapahtumien määrän sekunnissa olevan maksimissaan noin kaksikymmentä per sekunti. Chian kehittäjä Bram Cohen on myös todennut vuoden 2021 maaliskuussa tehdyssä haastattelussa \cite{bram-cohen-interview} siirtotapahtumien maksimimäärän sekunnissa olevan noin kaksikymmentä. Tämä esitetty arvio voidaan vahvistaa sillä, että Chia kohtasi niin kutsutun "dust storm" -hyökkäyksen lokakuussa 2021, jolloin lohkoketju joutui toimimaan maksimikapasiteetillaan ja tällöin saavutettiin hetkellisesti 25 siirtotapahtumaa sekunnissa, mikä on hieman enemmän kuin arvioitu kapasiteetti \cite{chia-tps}. Chian energiankulutus siirtotapahtumaa kohden on arvioitu käyttämällä tätä lukua ja vuosittaista energiankulutusta tarkempien tilastojen puuttuessa. Näiden lukujen perusteella voidaan laskea Chian energiankulutuksen yhtä siirtotapahtumaa kohden olevan 0,4864 kilowattituntia seuraavalla kaavalla:
+\begin{mycapequ}[!htbp]
+\begin{equation}
+\begin{split}
+E_{kok} & = 0,307~TWh \\
+ & = 307000000~kWh \\
+TX_{kok} & = 20~tx/s \\ 
+ & = 631138520~tx/a \\
+\frac{E_{kok}}{TX_{kok}} & = \frac{307000000~kWh}{631138520~tx/a} \\
+ & = 0,4864~kWh/tx
+\end{split}
+\end{equation}
+\caption{2.1: Lasketaan Chian energiankulutus siirtotapahtumaa kohden. \(E_{kok}\) vastaa Chian kokonaisenergiankulutusta vuodessa, kun taas \(TX_{kok}\) vastaa siirtotapahtumien määrää vuodessa, mikäli Chia toimisi sen maksimikapasiteetilla \(20~tx/s\).}
+\end{mycapequ}
+
+Energiankulutus ei kuitenkaan ole lohkoketjujen ekologisuutta vertailtaessa ainut olennainen mittari Chian tapauksessa. Chia-lohkoketjun louhijat ovat joulukuussa 2021 allokoineet 34,7 eksbitavua tallennustilaa yhteensä louhinnalle, mikä vastaa noin neljää miljoonaa kymmenen teratavun kovalevyä \cite{chiaspaceusage}. Euroopan unionin 2015 vuoden tutkimuksen mukaan yhden kovalevyn valmistamiseen kuluu kaksi kilowattia energiaa \cite[p~49--50]{manufacturingcarbon1} ja yhden kaupallisessa käytössä toimivan serveritietokoneen käyttöiän on tutkimuksessa laskettu olevan neljä vuotta. Tämän lisäksi kovalevyjen komponenteista kierrätetään 47\%, ja näiden kierrätettyjen komponenttien valmistamiseen käytetyistä materiaaleista ainoastaan 6,3\% voidaan kierrättää. Kierrätetyistä materiaaleista valtaosa on alumiinia, kun taas kriittisisiä raaka-aineita mitä käytetään kovalevyn piirilevyn ja magneettien valmistukseen ei kierrätetä.
+
+Chia on kuitenkin esittänyt, että lohkoketjun louhijat tulisivat käyttämään tallennustilanaan kaupallisessa käytössä toimineiden servereiden päivityksessä poistuneita tallennuslaitteita \cite{chia-mining}. Väitteessä perusteluksi on annettu, että käytettyjen tallennuslaitteiden ostaminen on louhijoille huomattavasti halvempaa. Koska PoSp:ssa ei tallenneta tallennustilaan mitään kriittistä tietoa voidaan tallennuslaitteita käyttää niiden hajoamiseen saakka.
 
 \end{otherlanguage}

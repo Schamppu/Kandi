@@ -1,10 +1,47 @@
 \chapter{Johdanto\label{intro}}
 
-Vuonna 2021 Bitcoinin energiankulutukseksi on arvioitu 181.07 terawattituntia \cite{bitcoinenergy}, joka on kasvanut vuoden 2017 energiankulutuksesta (30.2 terawattituntia \cite{bitcoinenergy1}) 599,6\%. Mikäli Bitcoin olisi valtio, se olisi yksinään energiakulutukseltaan maailman 24. suurin valtio, mikä on enemmän kuin esimerkiksi Puola. Energiakulutuksen kasvun arvioidaan vain jatkuvan edelleen, ja näin ollen Bitcoin ja kryptovaluutat yleisesti ovat esittäneet useita kysymyksiä niiden ympäristöystävällisyydestä ja vastuullisuudesta.
+Vuonna 2021 Bitcoinin energiankulutukseksi on arvioitu 200,57 terawattituntia \cite{bitcoinenergy}, joka on kasvanut vuoden 2017 energiankulutuksesta (30,2 terawattituntia \cite{bitcoinenergy1}) 599,6\%. Mikäli Bitcoin olisi valtio, se olisi yksinään energiakulutukseltaan maailman 24. suurin valtio, mikä on enemmän kuin esimerkiksi Thaimaa. Energiakulutuksen kasvun arvioidaan vain jatkuvan edelleen, ja näin ollen Bitcoin ja kryptovaluutat yleisesti ovat herättäneet kysymyksiä niiden ympäristöystävällisyydestä ja vastuullisuudesta.
 
-Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, jolla voidaan todentaa lohkoketjuun tehtävät lisäykset käyttämällä tietty määrä laskennallista tehokkuutta ongelman ratkaisuun. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
+Bitcoin ja muut kryptovaluutat perustuvat lohkoketjuteknologiaan. Lohkoketjut ovat lista toisiinsa linkitettyjä tietueita, joita kutsutaan lohkoiksi (blocks) \cite{blockchain1} ja lohkot muodostavat muuttumattoman ja vahvistetun tilikirjan. Lohkoketjut ovat tietorakenne ja ne voitaisiin kuvata esimerkiksi tietokantana:
 
-Tämä tutkielma käsittelee kolmen eri konsensusmekanismin energiankulutusta (Proof-of-Work, Proof-of-Stake ja Proof-of-Space) sekä niiden ympäristöystävällisyyttä. Tutkielma esittelee aluksi lohkoketjujen yleistoimintaperiaatteen, konsensusmekanismien toimintaperiaatteet yksinkertaistetusti ja kaksi konsensusmekanismia käyttävää lohkoketjua.
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
 
-Konsensusmekanismien ja niitä hyödyntävien lohkoketjujen esittelyn jälkeen tutkielma vertailee niiden energiankulutusta ja ympäristöystävällisyyttä. Tämän lisäksi tutkielma vertailee lohkoketjujen välillä olevia muita tärkeitä aspekteja, kuten niiden turvallisuutta ja skaalautuvuutta. Vaikka tutkielman pääpainona on vertailla konsensusmekanismien energiankulutusta ja vastuullisuutta, on konsensusmekanismeja mahdoton vertailla järkevästi ottamatta huomioon niihin liittyviä muita mahdollisia heikkouksia.
+\begin{center}
+\begin{table}[!hbtp]
+\begin{tabular}{   | c |  c |  c |  c | c |   } 
+  \hline
+ \thead {Aikaleima} & \thead {Aikaisemman \\ lohkon tiiviste} & \thead {Transaktio} & \thead {Ratkaisu \\ (nonce)} & \thead {Tiiviste} \\ 
+  \hline
+ \makecell {11.11.2021 \\ 12:00} & 0000mk1k9am... & \makecell User1 -> User2 \linebreak 1 BTC & 142 & 0000bbd9ljh...  \\  
+  \hline
+ \makecell {10.11.2021 \\ 21:00} & 0000kcam88a... & User3 -> User2, 2 BTC & 511 & 0000mk1k9am...  \\  
+  \hline
+ \makecell {09.11.2021 \\ 14:20} & 00008or1j52... & User1 -> User3, 1 BTC & 214 & 0000kcam88a...  \\  
+  \hline
+ ... & ... & ... & ... & ...  \\  
+  \hline
+ \makecell {01.01.2009 \\ 08:00} & Genesis & & & \\
+  \hline
+\end{tabular}
+\caption{\label{tab:pow-database}Tyypillisen PoW-lohkoketjun sisältämästä datasta muodostettu taulukko.}
+\end{table}
+\end{center}
+
+Ylläoleva tietokanta kuvaa yksinkertaistuttena Bitcoinin kaltaista Proof-of-Work konsensusmekanismilla toimivaa lohkoketjua. Esimerkin voi mieltää niin, että jokainen tietokannan rivi kuvaa yhtä lohkoketjun lohkoa. Sarakkeiden periaate on seuraava:
+
+\begin{enumerate}
+\item Aikaleima sisältää ajan, milloin rivi on lisätty tietokantaan.
+\item Aikaisempi tiiviste sisältää aikaisemmasta rivistä luodun tiivisteen (Bitcoin käyttää tiivistämiseen SHA-256 tiivistealgoritmia). Näin jokainen rivi viittaa aikaisempaan muodostaen ketjun.
+\item Transaktiot sisältävät käyttäjien väliset valuuttojen siirrot muodostaen tilikirjan. Tehtyjen siirtojen perusteella voidaan laskea kuinka paljon valuuttaa kullakin käyttäjällä on hallussaan.
+\item Ratkaisu, jota kutsutaan nonceksi, sisältää ratkaisun lohkoon liittyvään ongelmaan. Lohkosta muodostettu tiiviste on tehty käyttämällä tiettyä lukua, ja louhijoiden (miners) tulee koittaa palauttaa lohkon tiivistetty muoto takaisin tiivistämättömään muotoon arvaamalla tämä luku.
+\end{enumerate}
+
+Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, joka vastaa yllä annettua esimerkkiä lohkoketjujen toiminnasta. Jokaisen lohkon sisältämän ongelman ratkaisemiseksi on käytettävä Proof-of-Work konsensusmekanismilla toimivissa lohkoketjuissa laskennallista tehokkuutta. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
+
+Proof-of-Work konseusmekanismin valtavalle energiankulutukselle on esitetty ratkaisuna vaihtoehtoisia konsensusmekanismeja, kuten Proof-of-Stake ja Proof-of-Space. Tämä tutkielma käsittelee näiden kolmen eri konsensusmekanismin energiankulutusta (Proof-of-Work, Proof-of-Stake ja Proof-of-Space) sekä niiden ympäristöystävällisyyttä. Tutkielma esittelee konsensusmekanismien toimintaperiaatteet yksinkertaistetusti ja antaa esimerkkejä lohkoketjuista, jotka käyttävät kyseistä konsensusmekanismia.
+
+Konsensusmekanismien ja niitä hyödyntävien lohkoketjujen esittelyn jälkeen tutkielma vertailee pääasiallisesti niiden energiankulutusta ja ympäristöystävällisyyttä. Tämän lisäksi tutkielma vertailee lohkoketjujen välillä olevia muita tärkeitä aspekteja, kuten niiden turvallisuutta ja skaalautuvuutta. Vaikka tutkielman pääpainona on vertailla konsensusmekanismien energiankulutusta ja vastuullisuutta, on konsensusmekanismeja mahdoton vertailla järkevästi ottamatta huomioon niihin liittyviä muita mahdollisia heikkouksia.
 

@@ -4,18 +4,20 @@ Proof of Space, josta tässä tutkielmassa käytetään lyhennettä PoSp, kehite
 
 PoSp:n perusajatuksena on, että toisin kuin PoW:ssa, lohkon tiivisteeseen liittyvien ongelmien ratkaisut tallennetaan jo ennen ongelman vastaanottamista louhijan tallennustilaan \cite{posp3spacemint}. Kun ongelma tulee ratkaista, louhijat etsivät tallennustilastaan oikeaa ratkaisua, ja löytäessään ratkaisun validoivat lohkoketjuun tehdyn lisäkysen. Tällöin uuteen lohkoon liittyvän ongelman ratkaisemiseen menee hyvin vähän laskentatehoa, mutta ratkaisujen tallentamiseen vaaditaan paljon tallennustilaa ja aikaa. Näin ollen PoSp:n energiankulutus vastaa käytännössä kuluttajalaitteistolla rakennettua pilvipalvelinta.
 
-Ongelman ratkaisua lukuunottamatta PoSp toimii samalla tavalla kuin PoW: louhija, joka löytää ensimmäisenä oikean ratkaisun lähettää sen muille louhijoille validoitavaksi, ja validoinnin jälkeen oikean ratkaisun löytänyt louhija palkitaan kryptovaluutalla \cite{posp3spacemint}. SpaceMint-projektissa on mainittu PoSp:lle kolme etua verrattuna PoW:n:
+Ongelman ratkaisua lukuunottamatta PoSp toimii samalla tavalla kuin PoW (ks. kaavio \ref{fig_pow}): louhija, joka löytää ensimmäisenä oikean ratkaisun lähettää sen muille louhijoille validoitavaksi, ja validoinnin jälkeen oikean ratkaisun löytänyt louhija palkitaan kryptovaluutalla \cite{posp3spacemint}. SpaceMint-projektissa on mainittu PoSp:lle kolme etua verrattuna PoW:n:
 
 \begin{enumerate}
-\item Ekologisuus. PoSp tarvitsee toimintaansa tallennustilaa ja suorittaa hakuja tallennustilasta, joka on laskennallisesti huomattavasti edullisempaa kuin PoW:ssa prosessorin laskentatehoa hyödyntävä tiivistealgoritmin tuottamien ongelmien ratkaiseminen
-\item Ekonomisuus. Monilla kuluttajatason päätelaitteilla on huomattava määrä käyttämätöntä levytilaa, joka on taloudellisesti katsoen täysin hyödyntämätöntä. PoW:ssa on taloudellista järkevää suorittaa louhintaa vain tietyillä laitteilla ja vain tietyissä tilanteissa, kun kryptovaluutan hinta kattaa sähkön kulutuksen vaatimat kulut.
-\item Tasa-arvoisuus. PoW:ssa louhintaa tehdään lähes ainoastaan siihen erikoistuneissa louhintafarmeissa, kun taas yksittäisen henkilön mahdollisuudet tehdä taloudellisesti järkevää louhintaa on pienet. PoSp:ssa on teoreettisesti mahdollista, että louhintaa on mahdollista tehdä kuluttajatason laitteistolla.
+\item Ekologisuus. PoSp tarvitsee toimintaansa tallennustilaa ja suorittaa hakuja tallennustilasta, joka on laskennallisesti huomattavasti edullisempaa kuin PoW:ssa prosessorin laskentatehoa hyödyntävä tiivistealgoritmin tuottamien ongelmien ratkaiseminen.
+\item Ekonomisuus. Monilla kuluttajatason päätelaitteilla on huomattava määrä käyttämätöntä levytilaa, joka on taloudellisesti katsoen täysin hyödyntämätöntä. PoW:ssa on taloudellisesti järkevää suorittaa louhintaa vain louhintaan erikoistuneella laitteistolla silloin kun kryptovaluutan hinta kattaa sähkön kulutuksen vaatimat kulut.
+\item Tasa-arvoisuus. PoW:ssa louhintaa tehdään lähes ainoastaan siihen erikoistuneissa louhintafarmeissa, kun taas yksittäisen henkilön mahdollisuus tehdä taloudellisesti järkevää louhintaa on pieni. PoSp:ssa on teoreettisesti mahdollista, että louhintaa on voidaan tehdä kuluttajatason laitteistolla.
 \end{enumerate}
 
-PoSp:ssa on matalasta energiakulutuksestaan huolimatta useita ongelmia, minkä takia konsensusmekanismi on marginaalinen verrattuna PoW:n ja PoS:n. Suurin PoSp lohkoketju, Chia, on tällä hetkellään kryptovaluuttojen markkina-arvotilastossa 244. suurin \cite{Coingecko}. Tämä tutkielma esittelee kaksi PoSp konsensusmekanismia hyödyntävää lohkoketjua: Spacemintin ja Chian. Spacemint-lohkoketjua ei ole otettu koskaan käyttöön, mutta se loi perustavanlaatuisen tutkimuksen PoSp:n käytölle.
+PoSp:ssa on matalasta energiakulutuksestaan huolimatta ongelmia, mikä on osasyynä siihen miksi konsensusmekanismi on marginaalinen verrattuna PoW:n ja PoS:n. Ekologisuuden kannalta suurin ongelma on, että louhijat ostavat uusia korkean kapasiteetin ja matalan energiankulutuksen kovalevyjä \cite{chiaseagate1, chiaseagate2}. Vaikka louhinta on mahdollista kuluttajalaitteiden käyttämättömällä tallennustilalla, on uusien kovalevyjen ostaminen ja niiden käyttö louhintaan taloudellisesti kannattavaa, mikä vaikuttaa kovalevyjen myyntiin ja valmistukseen. PoSp:n vaikutukset näkyvät jo, vaikka konsensusmekanismi on muihin verrattuna verratain uusi: Seagaten kymmenen teratavun kovalevyjen myynti nousi 2021 vuoden huhtikuussa 240\% edellisen vuoden huhtikuuhun verrattuna, kun uusi PoSp-konsensusmekanismilla toimiva Chia-lohkoketju julkaistiin. Euroopan Unionin komission 2015 vuonna tekemän tutkimuksen \cite[p.~60]{manufacturingcarbon1} mukaan kovalevyistä voidaan kierrättää vain 6,3\% siihen käytetyistä raaka-aineista.
+
+Suurin PoSp lohkoketju, Chia, on tällä hetkellään kryptovaluuttojen markkina-arvotilastossa 244. suurin \cite{Coingecko}. Tämä tutkielma esittelee kyseisen lohkoketjun ja sen toimintaa, sekä tuo esille Chian positiiviset puolet ja siihen liittyviä ongelmia.
 
 
-\input{Ch.23a_SpaceMint}
+%% Kannattaako tätä edes esitellä? \input{Ch.23a_SpaceMint}
 \input{Ch.23b_Chia}
 
 \end{otherlanguage}

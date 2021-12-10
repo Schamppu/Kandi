@@ -27,6 +27,23 @@
 \PassOptionsToClass{openany,twoside,a4paper}{report}
 
 \usepackage{csquotes}
+
+% Kuvatiedostojen sijainti
+\graphicspath{ {./images/} }
+
+% Omat paketit taulukoihin
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+
+\DeclareCaptionType{mycapequ}[][List of equations]
+\captionsetup[mycapequ]{labelformat=empty}
+%\usepackage{epstopdf}
+%\epstopdfDeclareGraphicsRule{.pdf}{png}{.png}{convert #1 \OutputFile}
+%\AppendGraphicsExtensions{.pdf}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% REFERENCES
 %% Some notes on bibliography usage and options:
@@ -94,10 +111,11 @@
 
 % Set supervisors, use the titles according to the thesis language
 % in English Prof. or Dr., or in Finnish toht. or tri or FT, TkT, Ph.D. or in Swedish... 
-\supervisors{Prof.~D.U.~Mind, Dr.~O.~Why}
+\supervisors{J.~N.~Alanko}
+\examiners{K. Heljanko}
 
-\keywords{algorithms, data structures}
-\additionalinformation{\translate{\track}}
+\keywords{blockchain, consensus mechanisms, energy efficiency}
+%% \additionalinformation{\translate{\track}}
 
 %% For seminar reports:
 %%\additionalinformation{Name of the seminar}
@@ -178,7 +196,7 @@
 
 \include{Ch.10_Johdanto}
 \include{Ch.20_Esittely}
-\include{Ch.30_Energiatehokkuus}
+\include{Ch.30_Vertailu}
 \include{Ch.40_Yhteenveto}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
