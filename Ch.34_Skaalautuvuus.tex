@@ -1,0 +1,12 @@
+\section{Skaalautuvuus\label{skaalautuvuus}}
+\begin{otherlanguage}{english}
+
+PoW-lohkoketjut ja PoSp-lohkoketjuna Chia ovat skaalautuvuudeltaan verrattuna PoS-lohkoketjuihin huonompia. Taulukon \ref{table-energy} mukaan Bitcoin kykenee ainoastaan seitsemään siirtotapahtumaan sekunnissa, kun taas Ethereum pystyy suorittamaan 14 siirtotapahtumaa sekunnissa. Chian on arvioitu pystyvän suorittamaan noin 20 siirtotapahtumaa sekunnissa. Kun lohkoketjut pystyvät suorittamaan vain hyvin rajallisen määrän siirtoja sekunnissa, on tyypillistä että siirtotapahtumien käsittelyssä menee kauan ja lohkoketju voi ruuhkautua niin, että siirtotapahtumat eivät suoritu lainkaan. Mikäli lohkoketjujen pyrkimyksenä on toimia globaalina virtuaalivaluuttana vaaditaan tehokkaampia ratkaisuja.
+
+PoS-lohkoketjuista Cardano ylittää PoW- ja PoSp-lohkoketjujen siirtotapahtumien määrän sekunnissa yli kymmenkertaisesti. Algorand puolestaan ylittää Bitcoinin siirtotapahtumien määrän sekunnissa yli satakertaisesti, ja pärjää vertailussa parhaiten. Näiden lukujen perusteella PoS on skaalautuvin konsensusmekanismi.
+
+PoW- ja PoSp-lohkoketjuihin on kuitenkin esitetty niiden skaalautuvuuden ratkaisemiseksi niin kutsuttuja layer-2 ratkaisuja. Näissä ratkaisussa lohkoketjulle rakennetaan rinnakkaisia lohkoketjuja, missä voidaan suorittaa siirtoja rinnakkaisesti päälohkoketjun, eli niin kutsun layer-1:n kanssa. Tällä tavoin esimerkiksi Ethereumia on jo skaalattu Arbitrum- ja Optimism layer-2 ratkaisuilla. Samanlainen ratkaisu pystytään kuitenkin tekemään myös PoS-lohkoketjuissa, ja Cardano on arvioinut pystyvänsä layer-2 ratkaisulla skaalamaan siirtotapahtumien määrää sekunnissa yli miljoonaan \cite{cardano-hydra}.
+
+Keskitetyt kryptovaluutanvaihtopalvelut, kuten Binance ja Coinbase, myös helpottavat lohkoketjujen ruuhkautumista. Mikäli kryptovaluuttaa siirretään keskitetyissä vaihdantapalveluissa, ei tällaiset siirrot tapahdu lohkoketjussa itsessään. Kryptovaluuttaa voi myös siirtää muissa lohkoketjuissa, ja tällaisia ratkaisuja on esimerkiksi Wrapped Bitcoin. Wrapped Bitcoinissa myönnetään Bitcoinia vastaava niin kutsuttu wrapped-kolikko, jota voidaan natiivisti siirtää esimerkiksi Ethereumissa tai muissa lohkoketjuissa käyttäjien välillä. Wrapped-kolikot voi halutessaan muuntaa takaisin Bitcoiniksi. Nämä palvelut kuitenkin vaativat jonkin erillisen tahon, johon käyttäjien täytyy luottaa. Tällöin kryptovaluuttojen ajatus luottamuksettomasta valuutasta kärsii.
+
+\end{otherlanguage}

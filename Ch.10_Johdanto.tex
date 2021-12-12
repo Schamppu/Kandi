@@ -1,14 +1,14 @@
-\chapter{Johdanto\label{intro}}
+\chapter{Johdanto\label{intro}}¨
+% Oikoluettu: X 
 
-Vuonna 2021 Bitcoinin energiankulutukseksi on arvioitu 200,57 terawattituntia \cite{bitcoinenergy}, joka on kasvanut vuoden 2017 energiankulutuksesta (30,2 terawattituntia \cite{bitcoinenergy1}) 599,6\%. Mikäli Bitcoin olisi valtio, se olisi yksinään energiakulutukseltaan maailman 24. suurin valtio, mikä on enemmän kuin esimerkiksi Thaimaa. Energiakulutuksen kasvun arvioidaan vain jatkuvan edelleen, ja näin ollen Bitcoin ja kryptovaluutat yleisesti ovat herättäneet kysymyksiä niiden ympäristöystävällisyydestä ja vastuullisuudesta.
+Vuonna 2021 Bitcoinin energiankulutukseksi on arvioitu 200,57 terawattituntia \cite{bitcoinenergy}, joka on kasvanut vuoden 2017 energiankulutuksesta (30,2 terawattituntia \cite{bitcoinenergy1}) 599,6\%. Mikäli Bitcoin olisi valtio, se olisi energiankulutukseltaan maailman 24. suurin valtio, jolloin se olisi esimerkiksi suurempi kuin Thaimaa energiankulutukseltaan. Energiankulutuksen on arvioitu jatkavan kasvuaan, ja näin ollen Bitcoin ja kryptovaluutat yleisesti ovat herättäneet keskustelua niiden ympäristöystävällisyydestä ja vastuullisuudesta.
 
-Bitcoin ja muut kryptovaluutat perustuvat lohkoketjuteknologiaan. Lohkoketjut ovat lista toisiinsa linkitettyjä tietueita, joita kutsutaan lohkoiksi (blocks) \cite{blockchain1} ja lohkot muodostavat muuttumattoman ja vahvistetun tilikirjan. Lohkoketjut ovat tietorakenne ja ne voitaisiin kuvata esimerkiksi tietokantana:
+Bitcoin ja muut kryptovaluutat perustuvat lohkoketjuteknologiaan. Lohkoketjut ovat lista toisiinsa linkitettyjä tietueita, joita kutsutaan lohkoiksi (eng. \textit{blocks}) \cite{blockchain1}. Lohkot muodostavat muuttumattoman ja konsensusmekanismilla vahvistetun tilikirjan. Lohkoketjut ovat tietorakenne ja ne voitaisiin kuvata esimerkiksi seuraavanlaisena tietokantana:
 
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\bfseries}
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
-
 \begin{center}
 \begin{table}[!hbtp]
 \begin{tabular}{   | c |  c |  c |  c | c |   } 
@@ -26,22 +26,21 @@ Bitcoin ja muut kryptovaluutat perustuvat lohkoketjuteknologiaan. Lohkoketjut ov
  \makecell {01.01.2009 \\ 08:00} & Genesis & & & \\
   \hline
 \end{tabular}
-\caption{\label{tab:pow-database}Tyypillisen PoW-lohkoketjun sisältämästä datasta muodostettu taulukko.}
+\caption{Tyypillisen PoW-lohkoketjun sisältämästä datasta muodostettu taulukko.}
+\label{table-pow-database}
 \end{table}
 \end{center}
-
-Ylläoleva tietokanta kuvaa yksinkertaistuttena Bitcoinin kaltaista Proof-of-Work konsensusmekanismilla toimivaa lohkoketjua. Esimerkin voi mieltää niin, että jokainen tietokannan rivi kuvaa yhtä lohkoketjun lohkoa. Sarakkeiden periaate on seuraava:
+Taulukon \ref{table-pow-database} esittämä tietokanta kuvaa yksinkertaistuttena Bitcoinin kaltaista Proof-of-Work -konsensusmekanismilla toimivaa lohkoketjua. Esimerkin tietokanta on rakennettu niin, että jokainen tietokannan rivi kuvaa yhtä lohkoketjun lohkoa. Sarakkeiden periaate on seuraava:
 
 \begin{enumerate}
-\item Aikaleima sisältää ajan, milloin rivi on lisätty tietokantaan.
-\item Aikaisempi tiiviste sisältää aikaisemmasta rivistä luodun tiivisteen (Bitcoin käyttää tiivistämiseen SHA-256 tiivistealgoritmia). Näin jokainen rivi viittaa aikaisempaan muodostaen ketjun.
-\item Transaktiot sisältävät käyttäjien väliset valuuttojen siirrot muodostaen tilikirjan. Tehtyjen siirtojen perusteella voidaan laskea kuinka paljon valuuttaa kullakin käyttäjällä on hallussaan.
-\item Ratkaisu, jota kutsutaan nonceksi, sisältää ratkaisun lohkoon liittyvään ongelmaan. Lohkosta muodostettu tiiviste on tehty käyttämällä tiettyä lukua, ja louhijoiden (miners) tulee koittaa palauttaa lohkon tiivistetty muoto takaisin tiivistämättömään muotoon arvaamalla tämä luku.
+\item Aikaleima merkitsee aikaa, jolloin rivi on lisätty tietokantaan.
+\item Aikaisempi tiiviste merkitsee aikaisemmasta lohkosta luotua tiivistettä. Bitcoin käyttää esimerkiksi tiivistealgoritminaan SHA-256 -algoritmia. Näin jokainen lohko viittaa aikaisempaan lohkoon muodostaen ketjun.
+\item Transaktiot sisältävät käyttäjien väliset valuutan siirtotapahtumat muodostaen tilikirjan. Tehtyjen siirtotapahtumien perusteella voidaan laskea kuinka paljon valuuttaa kullakin käyttäjällä on.
+\item Ratkaisu, jota kutsutaan \textit{nonceksi}, sisältää ratkaisun lohkoon liittyvään ongelmaan. Lohkosta muodostettu tiiviste alkaa jollakin vaikeusasteen asettamalla määrällä nollia, ja louhijoiden (eng. \textit{miners}) tulee pyrkiä muodostaa tiivistealgoritmilla tiiviste, mikä alkaa samalla määrällä nollia. Tämä tehdään niin, että eri numeroita kokeilemalla muodostetaan tiivistealgoritmilla tiiviste, kunnes saadaan muodostettua sellainen, joka alkaa samalla määrällä nollia.
 \end{enumerate}
 
-Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, joka vastaa yllä annettua esimerkkiä lohkoketjujen toiminnasta. Jokaisen lohkon sisältämän ongelman ratkaisemiseksi on käytettävä Proof-of-Work konsensusmekanismilla toimivissa lohkoketjuissa laskennallista tehokkuutta. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
+Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, joka vastaa aikaisemmin annettua esimerkkiä lohkoketjun toiminnasta. Kun lohkoketjuun lisätään uusia lohkoja, täytyy PoW-konsensusmekanismia hyödyntävissä lohkoketjuissa käyttää laskennallista tehokkuutta niiden varmentamiseen. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
 
-Proof-of-Work konseusmekanismin valtavalle energiankulutukselle on esitetty ratkaisuna vaihtoehtoisia konsensusmekanismeja, kuten Proof-of-Stake ja Proof-of-Space. Tämä tutkielma käsittelee näiden kolmen eri konsensusmekanismin energiankulutusta (Proof-of-Work, Proof-of-Stake ja Proof-of-Space) sekä niiden ympäristöystävällisyyttä. Tutkielma esittelee konsensusmekanismien toimintaperiaatteet yksinkertaistetusti ja antaa esimerkkejä lohkoketjuista, jotka käyttävät kyseistä konsensusmekanismia.
+Proof-of-Work -konsensusmekanismin suurelle energiankulutukselle on esitetty ratkaisuna vaihtoehtoisia konsensusmekanismeja. Tämä tutkielma esittelee Proof-of-Workin lisäksi uusista konsensusmekanismeista Proof-of-Staken ja Proof-of-Spacen. Tutkielma esittelee konsensusmekanismien toimintaperiaatteen lyhyesti ja antaa esimerkkejä lohkoketjuista, jotka hyödyntävät kyseistä konsensusmekanismia.
 
-Konsensusmekanismien ja niitä hyödyntävien lohkoketjujen esittelyn jälkeen tutkielma vertailee pääasiallisesti niiden energiankulutusta ja ympäristöystävällisyyttä. Tämän lisäksi tutkielma vertailee lohkoketjujen välillä olevia muita tärkeitä aspekteja, kuten niiden turvallisuutta ja skaalautuvuutta. Vaikka tutkielman pääpainona on vertailla konsensusmekanismien energiankulutusta ja vastuullisuutta, on konsensusmekanismeja mahdoton vertailla järkevästi ottamatta huomioon niihin liittyviä muita mahdollisia heikkouksia.
-
+Konsensusmekanismeja hyödyntävien lohkoketjujen esittelyn jälkeen tutkielma vertailee lohkoketjujen energiankulutusta ja ympäristöystävällisyyttä. Tämän lisäksi tutkielma vertailee lohkoketjujen välillä olevia muita tärkeitä aspekteja, kuten niiden hajautuneisuutta ja skaalautuvuutta. Vaikka tutkielman pääpainona on vertailla konsensusmekanismien energiankulutusta ja vastuullisuutta on konsensusmekanismeja vertailtaessa tärkeää ottaa huomioon niihin liittyviä muita mahdollisia etuja ja heikkouksia.

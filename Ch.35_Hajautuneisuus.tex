@@ -1,0 +1,12 @@
+\section{Hajautuneisuus\label{hajautuneisuus}}
+\begin{otherlanguage}{english}
+
+Tyypillisesti konsensusmekanismeja vertailtaessa esitetään PoW:n eduksi sen hajautuneisuus, ja samaa on esitetty myös PoSp:n eduksi. Vaikka PoW:ssa ja PoSp:ssa on huomattavia ympäristöongelmia verrattuna PoS:n, on niitä oikeutettu sillä ettei PoS ole todellisesti hajautettu. Cardanossa esimerkiksi joulukuussa 2021 on noin 4700 osakkuusallasta (staking pool) \cite{cardano-staking-pools} ja Algorandissa solmuja on noin 1500 \cite{algorand-tps-nodes-etc}. Bitcoinissa louhijoita on yli viisi miljoonaa \cite{btc-pool-stats-miner-count}, mutta louhinta jakautuu yhteensä kolmentoista suuren louhinta-altaan kesken \cite{btc-pool-stats}. Chiassa louhijoita on 209 tuhatta \cite{chia-pool-stats}, mutta noin 69\% allokoidusta tallennustilasta jakautuu kahden louhinta-altaan kesken.
+
+Lohkoketjujen todellisesta hajautuneisuudesta on julkaistu tutkimuksia, jotka kumoavat tämän väitteen osittain. Esimerkiksi Kwonin ja kollegoiden tutkimus \cite{decentr-impossibility} laski vuonna 2019 sadalle suurimmalle kryptovaluutalle niiden hajeen. Bitcoinille hajeeksi laskettiin 3.89, Ethereumille 3,38 ja Cardanolle 2,81. Osa PoS-konsensusmekanismilla toimivista lohkoketjuista saavutti myös paremman hajeen kuin Bitcoin tai Ethereum: Tezosin hajeen laskettiin olleen 5,54 ja Qtumin 8,07. Tutkimus käytti hajeen laskentaan PoS ja PoW lohkoketjuissa kymmentätuhatta lohkoa vuodelta 2018, ja mittasi kuinka monen osoitteen välille kyseisten lohkojen vahvistaminen todellisuudessa jakautui. Syyksi tutkimus esitti tälle, että PoW lohkoketjujen käyttämät louhinta-altaat (mining pools) aiheuttavat sen, että niiden todellinen hajautuneisuus on huomattavasti luultua pienempi. Esimerkiksi Bitcoinissa on vuoden 2021 joulukuussa 13 louhinta-allasta, minkä välille lähes kaikki louhitut lohkot jakautuvat \cite{btc-pool-stats}. Osakkuusaltaiden yleistyessä PoS-konsensusmekanismilla toimivissa lohkoketjuissa myös niiden hajautuneisuuden voidaan olettaa laskevan.
+
+Lin ja kollegoinen tutkimuksessa \cite{decentr-comparison-steem-pow} vuonna 2021 saatiin vastaavanlaisia tuloksia. Tutkimus vertaili Bitcoinia ja Delegated-Proof-of-Stake (DPoS) -konsensusmekanismilla toimivaa Steem-lohkoketjua. Tässä huomattiin, että haje on suurempi Bitcoinin suurimpien louhijoiden välillä kuin Steemin suurimpien osakkaiden välillä. Steemissä puolestaan pienempien osakkaiden välillä haje oli parempi kuin Bitcoinin pienempien louhijoiden.
+
+
+
+\end{otherlanguage}
