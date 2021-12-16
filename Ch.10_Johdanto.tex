@@ -1,4 +1,5 @@
-\chapter{Johdanto\label{intro}}¨
+\begin{chapter}{Johdanto\label{intro}}
+\begin{otherlanguage}{finnish}
 % Oikoluettu: X 
 
 Vuonna 2021 Bitcoinin energiankulutukseksi on arvioitu 200,57 terawattituntia \cite{bitcoinenergy}, joka on kasvanut vuoden 2017 energiankulutuksesta (30,2 terawattituntia \cite{bitcoinenergy1}) 599,6\%. Mikäli Bitcoin olisi valtio, se olisi energiankulutukseltaan maailman 24. suurin valtio, jolloin se olisi esimerkiksi suurempi kuin Thaimaa energiankulutukseltaan. Energiankulutuksen on arvioitu jatkavan kasvuaan, ja näin ollen Bitcoin ja kryptovaluutat yleisesti ovat herättäneet keskustelua niiden ympäristöystävällisyydestä ja vastuullisuudesta.
@@ -13,13 +14,13 @@ Bitcoin ja muut kryptovaluutat perustuvat lohkoketjuteknologiaan. Lohkoketjut ov
 \begin{table}[!hbtp]
 \begin{tabular}{   | c |  c |  c |  c | c |   } 
   \hline
- \thead {Aikaleima} & \thead {Aikaisemman \\ lohkon tiiviste} & \thead {Transaktio} & \thead {Ratkaisu \\ (nonce)} & \thead {Tiiviste} \\ 
+ \thead {Aikaleima} & \thead {Aikaisemman \\ lohkon tiiviste} & \thead {Transaktiot} & \thead {Ratkaisu \\ (nonce)} & \thead {Tiiviste} \\ 
   \hline
- \makecell {11.11.2021 \\ 12:00} & 0000mk1k9am... & \makecell User1 -> User2 \linebreak 1 BTC & 142 & 0000bbd9ljh...  \\  
+ \makecell {11.11.2021 \\ 12:00} & 0000877bdf4... & \makecell {6.25 BTC → User 1 \\ User1 → User2, 1 BTC \\ User6 → User4, 3 BTC} & 142 & 0000cad61d2...  \\  
   \hline
- \makecell {10.11.2021 \\ 21:00} & 0000kcam88a... & User3 -> User2, 2 BTC & 511 & 0000mk1k9am...  \\  
+ \makecell {10.11.2021 \\ 21:00} & 0000faa566d... & \makecell {6.25 BTC → User 4 \\ User3 → User1, 2 BTC \\ User4 → User2, 1 BTC} & 511 & 0000877bdf4...  \\  
   \hline
- \makecell {09.11.2021 \\ 14:20} & 00008or1j52... & User1 -> User3, 1 BTC & 214 & 0000kcam88a...  \\  
+ \makecell {09.11.2021 \\ 14:20} & 0000ba918ff... & \makecell {6.25 BTC → User 2 \\ User2 → User3, 4 BTC \\ User5 → User1, 2 BTC} & 214 & 0000faa566d...  \\  
   \hline
  ... & ... & ... & ... & ...  \\  
   \hline
@@ -35,12 +36,15 @@ Taulukon \ref{table-pow-database} esittämä tietokanta kuvaa yksinkertaistutten
 \begin{enumerate}
 \item Aikaleima merkitsee aikaa, jolloin rivi on lisätty tietokantaan.
 \item Aikaisempi tiiviste merkitsee aikaisemmasta lohkosta luotua tiivistettä. Bitcoin käyttää esimerkiksi tiivistealgoritminaan SHA-256 -algoritmia. Näin jokainen lohko viittaa aikaisempaan lohkoon muodostaen ketjun.
-\item Transaktiot sisältävät käyttäjien väliset valuutan siirtotapahtumat muodostaen tilikirjan. Tehtyjen siirtotapahtumien perusteella voidaan laskea kuinka paljon valuuttaa kullakin käyttäjällä on.
+\item Transaktiot sisältävät käyttäjien väliset valuutan siirtotapahtumat muodostaen tilikirjan. Tehtyjen siirtotapahtumien perusteella voidaan laskea kuinka paljon valuuttaa kullakin käyttäjällä on. Jokainen transaktio vie jonkin verran tilaa lohkosta, ja lohkoon mahtuu vain lohkon koon (eng. \textit{block size}) salliman määrän verran transaktioita. Transaktioista ensimmäinen on niin kutsuttu \textit{coinbase-transaktio}, jolla annetaan ratkaisun löytäneelle käyttäjälle palkkio.
 \item Ratkaisu, jota kutsutaan \textit{nonceksi}, sisältää ratkaisun lohkoon liittyvään ongelmaan. Lohkosta muodostettu tiiviste alkaa jollakin vaikeusasteen asettamalla määrällä nollia, ja louhijoiden (eng. \textit{miners}) tulee pyrkiä muodostaa tiivistealgoritmilla tiiviste, mikä alkaa samalla määrällä nollia. Tämä tehdään niin, että eri numeroita kokeilemalla muodostetaan tiivistealgoritmilla tiiviste, kunnes saadaan muodostettua sellainen, joka alkaa samalla määrällä nollia.
 \end{enumerate}
 
-Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, joka vastaa aikaisemmin annettua esimerkkiä lohkoketjun toiminnasta. Kun lohkoketjuun lisätään uusia lohkoja, täytyy PoW-konsensusmekanismia hyödyntävissä lohkoketjuissa käyttää laskennallista tehokkuutta niiden varmentamiseen. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
+Bitcoin käyttää niin kutsuttua Proof-of-Work (PoW) -konsensusmekanismia \cite{satoshibitcoin}, joka vastaa aikaisemmin annettua esimerkkiä lohkoketjun toiminnasta. Kun lohkoketjuun lisätään uusia lohkoja, täytyy PoW-konsensusmekanismia hyödyntävissä lohkoketjuissa käyttää laskennallista tehokkuutta niiden varmentamiseen, ja varmentamisen tehnyt käyttäjä saa palkkion. Tämä on aiheuttanut Bitcoinin louhinnassa kilpailutilanteen, missä käyttäjät kilpailevat laskennallisesta tehokkuudesta saavuttaakseen suurempia voittoja louhinnassa.
 
 Proof-of-Work -konsensusmekanismin suurelle energiankulutukselle on esitetty ratkaisuna vaihtoehtoisia konsensusmekanismeja. Tämä tutkielma esittelee Proof-of-Workin lisäksi uusista konsensusmekanismeista Proof-of-Staken ja Proof-of-Spacen. Tutkielma esittelee konsensusmekanismien toimintaperiaatteen lyhyesti ja antaa esimerkkejä lohkoketjuista, jotka hyödyntävät kyseistä konsensusmekanismia.
 
 Konsensusmekanismeja hyödyntävien lohkoketjujen esittelyn jälkeen tutkielma vertailee lohkoketjujen energiankulutusta ja ympäristöystävällisyyttä. Tämän lisäksi tutkielma vertailee lohkoketjujen välillä olevia muita tärkeitä aspekteja, kuten niiden hajautuneisuutta ja skaalautuvuutta. Vaikka tutkielman pääpainona on vertailla konsensusmekanismien energiankulutusta ja vastuullisuutta on konsensusmekanismeja vertailtaessa tärkeää ottaa huomioon niihin liittyviä muita mahdollisia etuja ja heikkouksia.
+
+\end{otherlanguage}
+\end{chapter}

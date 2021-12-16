@@ -1,8 +1,7 @@
-\section{Proof-of-Space (PoSp)\label{posp}}
-\begin{otherlanguage}{english}
+\begin{section}{Proof-of-Space (PoSp)\label{posp}}
 Proof of Space, josta tässä tutkielmassa käytetään lyhennettä PoSp, kehitettiin ratkaisuna Bitcoinin energiankulutukseen \cite{pospchia1,posp2}. PoSp perustuu siihen, että poiketen PoW:sta louhijat todistavat varanneen tietyn määrän tallennustilaa sen sijaan, että niiden tulisi todistaa käyttäneen tietyn verran laskennallista tehokkuutta ongelman ratkaisulle.
 
-PoSp:n perusajatuksena on, että toisin kuin PoW:ssa, lohkon tiivisteeseen liittyvien ongelmien ratkaisut tallennetaan jo ennen ongelman vastaanottamista louhijan tallennustilaan \cite{posp3spacemint}. Kun ongelma tulee ratkaista, louhijat etsivät tallennustilastaan oikeaa ratkaisua, ja löytäessään ratkaisun validoivat lohkoketjuun tehdyn lisäkysen. Tällöin uuteen lohkoon liittyvän ongelman ratkaisemiseen menee hyvin vähän laskentatehoa, mutta ratkaisujen tallentamiseen vaaditaan paljon tallennustilaa ja aikaa. Näin ollen PoSp:n energiankulutus vastaa käytännössä kuluttajalaitteistolla rakennettua pilvipalvelinta.
+PoSp:n perusajatuksena on, että toisin kuin PoW:ssa, lohkon tiivisteeseen liittyvien ongelmien ratkaisut tallennetaan jo ennen ongelman vastaanottamista louhijan tallennustilaan \cite{posp3spacemint}. Kun ongelma tulee ratkaista, louhijat etsivät tallennustilastaan oikeaa ratkaisua, ja löytäessään ratkaisun validoivat lohkoketjuun tehdyn lisäyksen. Tällöin uuteen lohkoon liittyvän ongelman ratkaisemiseen menee hyvin vähän laskentatehoa, mutta ratkaisujen tallentamiseen vaaditaan paljon tallennustilaa ja aikaa. Näin ollen PoSp:n energiankulutus vastaa käytännössä kuluttajalaitteistolla rakennettua pilvipalvelinta.
 
 Ongelman ratkaisua lukuunottamatta PoSp toimii samalla tavalla kuin PoW (ks. kaavio \ref{fig_pow}): louhija, joka löytää ensimmäisenä oikean ratkaisun lähettää sen muille louhijoille validoitavaksi, ja validoinnin jälkeen oikean ratkaisun löytänyt louhija palkitaan kryptovaluutalla \cite{posp3spacemint}. SpaceMint-projektissa on mainittu PoSp:lle kolme etua verrattuna PoW:n:
 
@@ -18,6 +17,5 @@ Suurin PoSp lohkoketju, Chia, on tällä hetkellään kryptovaluuttojen markkina
 
 
 %% Kannattaako tätä edes esitellä? \input{Ch.23a_SpaceMint}
-\input{Ch.23b_Chia}
-
-\end{otherlanguage}
+\input{Ch.23a_Chia}
+\end{section}

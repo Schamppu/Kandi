@@ -1,8 +1,7 @@
-\section{Proof-of-Stake (PoS)\label{pos}}
+\newpage
+\begin{section}{Proof-of-Stake (PoS)\label{pos}}
 
-\begin{otherlanguage}{english}\sloppy
-
-Proof-of-Stake, josta tässä tutkielmassa käytetään lyhennettä PoS, sai alkunsa vastauksena PoW:n energiankulutukselle \cite{pos2}. PoS:n ideana on, että lohkoketjun konsensusmekanismi ei perustu laskennalliselle tehokkuudelle, vaan taloudilleselle haitalle mikä aiheutuu louhijoille mikäli lohkoketjua yritetään hyödyntää haitallisessa mielessä. Louhijoita PoS:sa kutsutaan usein osakkaiksi (stakers).
+Proof-of-Stake, josta tässä tutkielmassa käytetään lyhennettä PoS, sai alkunsa vastauksena PoW:n energiankulutukselle \cite{pos2}. PoS:n ideana on, että lohkoketjun konsensusmekanismi ei perustu laskennalliselle tehokkuudelle, vaan taloudelliselle haitalle joka aiheutuu väärintekijälle mikäli lohkoketjua yritetään hyödyntää haitallisessa mielessä. Louhijoita PoS:sa kutsutaan usein osakkaiksi (eng. \textit{stakers}).
 
 \vspace{1mm}
 
@@ -18,19 +17,17 @@ Proof-of-Stake, josta tässä tutkielmassa käytetään lyhennettä PoS, sai alk
 PoS lohkoketjujen malli koostuu viidestä eri osasta \cite{pos1, pos2}:
 
 \begin{enumerate}
-\item Konsensus, missä jokin tietty osuus osakkaista (stakers) ovat yhteisymmärryksessä siitä, että lohkoketjuun tehdyt lisäykset ovat oikeita. Kuvaaja \ref{fig_pos} esittää esimerkin siitä, että konsensus voidaan saavuttaa valitsemalla osakkaista satunnaisella valinnalla neuvosto, joka äänestää uuden lohkon lisäämisestä lohkoketjuun.
+\item Konsensus, missä jokin tietty osuus osakkaista (eng. \textit{stakers}) ovat yhteisymmärryksessä siitä, että lohkoketjuun tehdyt lisäykset ovat oikeita. Kuvaaja \ref{fig_pos} esittää esimerkin siitä, että konsensus voidaan saavuttaa valitsemalla osakkaista satunnaisella valinnalla neuvosto, joka äänestää uuden lohkon lisäämisestä lohkoketjuun.
 \item Osakkuus, eli sijoittamisprosessi, missä käyttäjä voi ryhtyä osakkaaksi sijoittamalla jonkin määrän kryptovaluuttaa lohkoketjuun. Sijoitettu kryptovaluutta lukitaan tyypillisesti joksikin ennalta määrätyksi ajaksi, jolloin sijoitettuja varoja ei voi käyttää.
 \item Palkitseminen, missä osakkaille jaetaan sijoitetun valuutan mukaan suhteutettu palkinto siitä, että he ovat olleet osallisina lohkoketjun turvaamisessa hyväksymällä uusia lohkoja. Kuvaaja \ref{fig_pos} esittää esimerkin siitä, miten palkkion saa neuvostoon valitut jäsenet, jotka olivat mukana lohkoketjun varmistamisessa.
-\item Rankaiseminen, missä lohkoketjun väärinkäytöstä tai sen yritykseen syyllistyneiden käyttäjien lukitsemista varoista vähennetään jokin osuus. Rankaisuja tapahtuu myös joissakin tapauksissa myös silloin, mikäli osakas valitaan neuvostoon (ks. kuvaaja \ref{fig_pos}) ja jättää äänestämättä tai mikäli neuvostoon valittu osakas yrittää hyväksyä kahta lohkoa yhtäaikaisesti (double signing).
+\item Rankaiseminen, missä lohkoketjun väärinkäytöstä tai sen yritykseen syyllistyneiden käyttäjien lukitsemista varoista vähennetään jokin osuus. Rankaisuja tapahtuu myös joissakin tapauksissa myös silloin, mikäli osakas valitaan neuvostoon (ks. kuvaaja \ref{fig_pos}) ja jättää äänestämättä tai mikäli neuvostoon valittu osakas yrittää hyväksyä kahta lohkoa yhtäaikaisesti (eng. \textit{double signing}).
 \item Uudelleenvalinta, missä valitaan tyypillisesti painotetun satunnaisuuden perusteella osakkaat, jotka hyväksyvät seuraavan lisäkysen lohkoketjuun. Myös muiden valintaperusteiden käyttö on mahdollista, mutta tyypillisesti valinta tapahtuu painotetulla satunnaisuudella, missä enemmän kryptovaluuttaa sijoittaneet osakkaat todennäköisemmin valikoituvat hyväksymään lisäyksiä lohkoketjuun.
 \end{enumerate}
 
-Proof-of-Stake konsensusmekanismin ollaan havaittu sen eri implementaatioissa olevan hyvin vähän energiaa kuluttava. Ongelmia kuitenkin on: matala yksityisyys, pääoman kasautuminen muutamalle osakkaalle ja skaalautuvuus nousevat usein esiin PoS:n kohdistuvassa kritiikissä. Näiden lisäksi lohkoketjujen sisältämää dataa ja infrastruktuuria ylläpitävien solmujen käyttämä laitteisto ja määrä vaikuttavat lohkoketjun sähkönkulutukseen. PoS:n energiankulutuksessa joudutaankin tyypillisesti tasapainottelemaan siinä, että halutaanko korkea hajautuneisuus suurella määrällä solmuja, vai pieni energiankulutus vähemmällä määrällä solmuja jolloin lohkoketjun hajautuneisuus on huonompi.
+Proof-of-Stake konsensusmekanismin on havaittu olevan hyvin vähän energiaa kuluttava sen eri implementaatioissa. Ongelmia kuitenkin on: matala yksityisyys, pääoman kasautuminen muutamalle osakkaalle ja skaalautuvuus nousevat usein esiin PoS:n kohdistuvassa kritiikissä. Näiden lisäksi lohkoketjujen sisältämää dataa ja infrastruktuuria ylläpitävien solmujen käyttämä laitteisto ja määrä vaikuttavat lohkoketjun sähkönkulutukseen. PoS:n energiankulutuksessa joudutaankin tyypillisesti tasapainottelemaan siinä, että halutaanko korkea hajautuneisuus suurella määrällä solmuja, vai pieni energiankulutus vähemmällä määrällä solmuja, jolloin lohkoketjun hajautuneisuus on huonompi.
 
-Seuraavaksi tutkielma esittelee kaksi Proof-of-Stake konsensusmekanismilla toimivaa lohkoketjua: Cardanon ja Algorandin. Cardano-lohkoketju ei ole vielä ottanut älysopimustoiminnallisuuksiaan käyttöön, mutta sen energiatehokkuudesta on jo laajalti tilastoja.
+Seuraavaksi tutkielma esittelee kaksi Proof-of-Stake konsensusmekanismilla toimivaa lohkoketjua: Cardanon \cite{cardanowhitepaper} ja Algorandin \cite{algorandwhitepaper}. Cardano-lohkoketju ei ole vielä ottanut älysopimustoiminnallisuuksiaan käyttöön, mutta sen energiatehokkuudesta on jo laajalti tilastoja.
 
 \input{Ch.22a_Cardano}
 \input{Ch.22b_Algorand}
-
-
-\end{otherlanguage}
+\end{section}

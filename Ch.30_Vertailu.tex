@@ -1,10 +1,10 @@
-\chapter{Konsensusmekanismien vertailu\label{vertailu}}
-
+\begin{chapter}{Konsensusmekanismien vertailu\label{vertailu}}
+\begin{otherlanguage}{finnish}
 Tämä kappale vertailee konsensusmekanismien kokonaisenergiankulutusta, yksittäisten siirtotapahtumien energiankulutusta sekä muita tärkeitä konsensusmekanismeihin liittyviä ominaispiirteitä, kuten skaalautuvuutta ja turvallisuutta. Vertailu tehdään käyttämällä teoriaosuudessa esiteltyjä merkittävimpiä lohkoketjuja esimerkkitapauksina kunkin konsensusmekanismin tyypillisestä energiankulutuksesta.
 
-\begin{center}
 \begin{table}[!hbtp]
-\begin{tabular}{   | c |  c |  c |  c | c |   } 
+\begin{center}
+\begin{tabular}{   | c |  c |  c |  c |   } 
   \hline
  \thead {Lohkoketjun \\ nimi} & \thead {Energiankulutus \\ (vuodessa)} & \thead {Transaktioita \\ sekunnissa (TPS)} & \thead {Energiankulutus \\ (siirtoa kohden)} \\ 
   \hline
@@ -14,15 +14,15 @@ Tämä kappale vertailee konsensusmekanismien kokonaisenergiankulutusta, yksitt�
   \hline
  \makecell {Cardano (PoS)} & 6 GWh \cite{cardanoenergy} & $\sim$257 \cite{cardano-tps} & 0,5479 kWh  \\
   \hline
- \makecell {Algorand (PoS)} & 4,9 GWh \cite{algorandenergy} & $\sim$1300 \cite{algorandenergy} & 0,000008 kWh  \\
+ \makecell {Algorand (PoS)} & 1,68 GWh \cite{algorand-energy} & $\sim$1300 \cite{algorand-energy-2} & 0,00534 kWh  \\
   \hline
  \makecell {Chia (PoSp)} & 0,307 TWh \cite{chiaenergy} & $\sim$20\footnotemark & 0,4864 kWh\footnotemark[\value{footnote}]  \\
   \hline
 \end{tabular}
 \caption{\label{tab:pow-database}Energiankulutus- ja sekunnissa tapahtuvien siirtotapahtumien vertailu eri lohkoketjujen välillä.}
 \label{table-energy}
-\end{table}
 \end{center}
+\end{table}
 
 Taulukosta \ref{table-energy} huomataan, että PoW-lohkoketjujen vuosittainen energiankulutus on sekä PoS- että PoSp-konsensusmekanismeilla toimiviin lohkoketjuihin verrattuna merkittävästi suurempi. Vuosittainen energiankulutus on kuitenkin vertailukohteena harhaanjohtava, sillä sitä on hankala käyttää lohkoketjun energiatehokkuuden mittaamiseen. Täten taulukossa \ref{table-energy} on myös esitetty kuinka paljon energiaa yksi siirtotapahtuma vaatii.
 
@@ -32,37 +32,45 @@ Taulukosta \ref{table-energy} huomataan, että PoW-lohkoketjujen vuosittainen en
 
 Energiankulutusta vertailtaessa on lohkoketjujen markkina-arvolla myös merkittävä vaikutus niiden energiankulutukseen. Tyypillisesti matalan markkina-arvon lohkoketjut kuluttavat vähemmän energiaa, kun niissä on vähemmän solmuja ja louhijoita verrattuna suurempiin lohkoketjuihin. Kuvasta \ref{fig_energy} näkyy, miten lohkoketjun markkina-arvon noustessa sen energiankulutus kasvaa merkittävästi.
 
-\begin{filecontents}{thu2.dat}
-X Arvo  	Kulutus
-1 80	    19.87 % 80.19
-2 235	    36.75 % 235.13
-3 364	    77.78 % 364.23
-4 613	    135.12 % 613.34
-5 1230  	189.88 % 
-\end{filecontents}
-
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-axis lines=middle,
-ymin=19.80,
-ymax=200,
-x label style={at={(current axis.right of origin)},anchor=north, below=8mm},
-%title={\textit{\textbf{Bitcoinin energiankulutus markkina-arvon kasvaessa}}},
-xlabel=Markkina-arvo (miljardeissa),
-ylabel=Energiankulutus vuodessa (TWh),
-xticklabel style = {rotate=0,anchor=east,below=1mm},
-enlargelimits = false,
-ymajorgrids=true,
-grid style=dashed,
-xticklabels from table={thu2.dat}{Arvo},xtick=data]
-\addplot[orange,thick,mark=square*] table [y=Kulutus,x=X]{thu2.dat};
+    xlabel={Markkina-arvo (miljardeissa)},
+    ylabel={Energiankulutus vuodessa (TWh/a)},
+    xmin=40, xmax=1200,
+    ymin=16, ymax=180,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot[
+    color=orange,
+    mark=square*,
+    ]
+    coordinates {
+    (40.15,16.37) % 01.09.2017: https://web.archive.org/web/20170901065814/https://digiconomist.net/bitcoin-energy-consumption
+    (232.46,40.24) % 12.01.2018: https://web.archive.org/web/20180112215303/https://digiconomist.net/bitcoin-energy-consumption
+    (433.04,77.78) %  24.12.2020: https://web.archive.org/web/20201224110206/https://digiconomist.net/bitcoin-energy-consumption
+    (753.24,128.51) % 15.06.2021: https://web.archive.org/web/20210615053124/https://digiconomist.net/bitcoin-energy-consumption
+    (1181.3,176.83) % 19.10.2021: https://web.archive.org/web/20211019194409/https://digiconomist.net/bitcoin-energy-consumption
+    };
+    
 \end{axis}
 \end{tikzpicture}
-\caption{Bitcoinin energiankulutus markkina-arvon kasvaessa. Kuvaajan tilastot on kerätty ottamalla sen markkina-arvo Coingecko-verkkosivulta ja samalta päivältä sen energiankulutus Diginomist-verkkosivun energiankulutustilastosta Waybackmachinella.}
+\caption{Bitcoinin energiankulutus markkina-arvon kasvaessa. Kuvaajan tilastot on kerätty ottamalla sen markkina-arvo Coingecko-verkkosivulta \cite{Coingecko} ja samalta päivältä sen energiankulutus Digiconomist-verkkosivun energiankulutustilastosta Waybackmachinella\footnotemark}
 \label{fig_energy}
 \end{figure}
+
+\footnotetext{
+\begin{scriptsize}
+\url{https://web.archive.org/web/20170901065814/https://digiconomist.net/bitcoin-energy-consumption} \\
+\url{https://web.archive.org/web/20180112215303/https://digiconomist.net/bitcoin-energy-consumption} \\
+\url{https://web.archive.org/web/20201224110206/https://digiconomist.net/bitcoin-energy-consumption} \\
+\url{https://web.archive.org/web/20210615053124/https://digiconomist.net/bitcoin-energy-consumption} \\
+\url{https://web.archive.org/web/20211019194409/https://digiconomist.net/bitcoin-energy-consumption}
+\end{scriptsize}
+}
 
 Energiankulutuksen kasvu markkina-arvon kasvaessa kuvan \ref{fig_energy} esittämällä tavalla pätee vain PoW-konsensusmekanismilla toimiviin lohkoketjuihin. PoS:ssä solmujen määrä ei kasva yhtä merkittävästi markkina-arvon kasvaessa, sillä PoS:ssä osakkaiden ja sijoitetun pääoman määrä kasvaa vastaavalla tavalla, mutta solmujen ylläpito ei ole yhtä kannattavaa käyttäjälle. PoSp:ssä puolestaan on esitetty, että lohkoketjun vaatima tallennustilan määrä voi kasvaa vastaavalla tavalla, mutta tallennustilan ollessa energiankulutukseltaan huomattavasti tehokkaampaa ei energiankulutus kasva yhtä merkittävästi.
 
@@ -73,3 +81,5 @@ Tutkielma vertailee seuraavaksi teemoittain konsensusmekanismien ongelma-alueita
 \input{Ch.33_Hiilidioksidipaastot}
 \input{Ch.34_Skaalautuvuus}
 \input{Ch.35_Hajautuneisuus}
+\end{otherlanguage}
+\end{chapter}

@@ -1,5 +1,4 @@
-\section{Proof-of-Work (PoW)\label{pow}}
-\begin{otherlanguage}{english}
+\begin{section}{Proof-of-Work (PoW)\label{pow}}
 % Oikoluettu: X 
 Proof-of-Work, josta tässä tutkielmassa käytetään lyhennettä PoW, on tutkielman kirjoittamisen hetkellä markkinaosuudeltaan suurin konsensusmekanismi. PoW:ta käyttää kaksi suurinta lohkoketjua: Bitcoin ja Ethereum \cite{Coingecko}.
 
@@ -18,16 +17,17 @@ Kaavio \ref{fig_pow} esittää, miten uuden lohkon luominen, varmentaminen, ja l
 
 \begin{enumerate}
 \item Luodaan siirtotapahtumia sisältävä lohko. Taulukossa \ref{table-pow-database} esiteltiin, millaista dataa lohkoketjun lohkot sisältävät. Kaavion \ref{fig_pow} ensimmäisessä vaiheessa luodaan uusi lohko, missä louhinnan kannalta olennaisinta on siitä luotu tiiviste.
-\item Louhijat pyrkivät ratkaisemaan lohkon tiivisteeseen liittyvän ongelman. Koska esimerkiksi Bitcoinissa käytetty SHA-256 tiivistealgoritmi luo annetusta merkkijonosta aina saman tiivisteen, tehdään oikean tiivisteen arvaamisesta louhijoille hankalaa lisäämällä tiivisteen alkuun jokin määrä nollia \cite{blockchain1}. Vaikeusaste määräytyy louhijoiden määrän (eli käytännössä kokonaislaskentatehokkuuden) mukaan niin, että uusi lohko varmennetaan noin kymmenessä minuutissa. Lohko varmennetaan niin, että louhijat pyrkivät luomaan tiivisteen, jonka alussa on yhtä monta nollaa kuin lohkon tiivisteessä. Koska yksi merkkijono tuottaa tiivistelagoritmilla aina saman tiivisteen, joutuvat louhijat lisäämään tiivisteeseen satunnaisen luvun, mitä kutsutaan nonceksi (eng. \textit{number once}), jolloin riittävällä määrällä yrityksiä joku louhijoista saa luotua sellaisen tiivisteen, missä on vaikeuasteen vaatima määrä nollia tiivisteen alussa. Tämä on yksinkertaistettuna esitetty kaavion \ref{fig_pow} toisessa vaiheessa.
-\item Oikean ratkaisun (eli käytännössä oikean tiivisteen tuottaneen noncen) löytänyt käyttäjä lähettää vastauksensa lohkoketjulle ja vastaanottaa ratkaisun löytämisestä palkkion. Palkkioksi käyttäjä saa jonkin määrän lohkoketjun käyttämää kryptovaluuttaa itselleen. Kaavion \ref{fig_pow} viimeinen vaihe käsittelee palkkionjakoa.
+\item Louhijat pyrkivät ratkaisemaan lohkon tiivisteeseen liittyvän ongelman. Koska esimerkiksi Bitcoinissa käytetty SHA-256 tiivistealgoritmi luo annetusta merkkijonosta aina saman tiivisteen, tehdään oikean tiivisteen arvaamisesta louhijoille hankalaa lisäämällä tiivisteen alkuun jokin määrä nollia \cite{satoshibitcoin}. Vaikeusaste määräytyy kokonaislaskentatehon (eli käytännössä louhijoiden määrän ja laitteiston) mukaan niin, että uusi lohko varmennetaan noin kymmenessä minuutissa. Lohko varmennetaan niin, että louhijat pyrkivät luomaan tiivisteen, jonka alussa on yhtä monta nollaa kuin lohkon tiivisteessä. Koska yksi merkkijono tuottaa tiivistelagoritmilla aina saman tiivisteen, joutuvat louhijat lisäämään tiivisteeseen satunnaisen luvun, mitä kutsutaan nonceksi (eng. \textit{number once}), jolloin riittävällä määrällä yrityksiä joku louhijoista saa luotua sellaisen tiivisteen, missä on vaikeuasteen vaatima määrä nollia tiivisteen alussa. Tämä on yksinkertaistettuna esitetty kaavion \ref{fig_pow} toisessa vaiheessa.
+\item Oikean ratkaisun (eli käytännössä oikean tiivisteen tuottaneen noncen) löytänyt käyttäjä lähettää vastauksensa lohkoketjulle ja vastaanottaa ratkaisun löytämisestä palkkion. Palkkioksi käyttäjä saa jonkin määrän lohkoketjun käyttämää kryptovaluuttaa itselleen. Kaavion \ref{fig_pow} viimeinen vaihe käsittelee palkkionjakoa. Lohko lisätään varmentamisen jälkeen osaksi sitä lohkoketjua, mikä on pisin.
 \end{enumerate}
 
-Konsensusmekanismeja vertailtaessa PoW:n eduksi mainitaan usein sen suuri hajautuneisuus. Lohkoketjuissa tyypillisesti periaatteena on, että mitä hajautuneempi lohkoketju on, sitä turvallisempi se on, sillä laajasti hajautuneisiin lohkoketjuihin on käytännössä vaikeaa kohdistaa hyökkäys \cite{51attack}. Esimerkiksi Bitcoinia vastaan hyökkääminen vaatisi, että hyökkääjä saisi käyttöönsä yli puolet Bitcoinin louhintaan käytetystä laskentatehosta. Tästä käytetään Bitcoinin tapauksessa nimitystä "51\% Attack".
+PoW-konsensusmekanismin yksi olennainen piirre on myös lohkoketjun pituus (eng. \textit{block height}). Lohkot varmentamisen jälkeen lisätään osaksi sitä ketjua, joka on pisin, eli käytännössä siihen missä on eniten lohkoja mikäli louhijat ovat yhteisymmärryksessä \cite{satoshibitcoin}. Tällä mahdollistetaan se, että jos yhteisymmärrystä ei ole, voi lohkoketju haarautua (eng. \textit{fork}) useammaksi ketjuksi jotka ovat kaikki kuitenkin päteviä. Bitcoin on louhijoiden erimielisyyksien takia haarautunut useaan kertaan. Esimerkkejä tällaisista haarautuneista Bitcoin-lohkoketjuista on Bitcoin Cash \cite{bitcoin-cash} ja Bitcoin Gold \cite{bitcoin-gold}.
+
+Konsensusmekanismeja vertailtaessa PoW:n eduksi mainitaan usein sen suuri hajautuneisuus. Lohkoketjuissa tyypillisesti periaatteena on, että mitä hajautuneempi lohkoketju on, sitä turvallisempi se on, sillä laajasti hajautuneisiin lohkoketjuihin on käytännössä vaikeaa kohdistaa hyökkäys \cite{51attack}. Esimerkiksi Bitcoinia vastaan hyökkääminen vaatisi, että hyökkääjä saisi käyttöönsä yli puolet Bitcoinin louhintaan käytetystä laskentatehosta. Tästä käytetään Bitcoinin tapauksessa nimitystä "51\% hyökkäys".
 
 
 Tutkielma esittelee seuraavaksi kaksi suurinta PoW-konsensusmekanismilla toimivaa lohkoketjua: Bitcoinin ja Ethereumin.
 
 \input{Ch.21a_Bitcoin}
 \input{Ch.21b_Ethereum}
-
-\end{otherlanguage}
+\end{section}
